@@ -1,4 +1,3 @@
-## 二叉搜索树中第k小的元素
 ---
 layout:     post
 title:      LeetCode二叉搜索树中第k小的元素
@@ -10,6 +9,8 @@ catalog: true
 tags:
     - algorithm
 ---
+
+## 二叉搜索树中第k小的元素
 
 ### 题目描述
 
