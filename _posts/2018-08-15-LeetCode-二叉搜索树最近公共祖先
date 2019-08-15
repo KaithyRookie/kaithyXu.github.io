@@ -1,0 +1,68 @@
+---
+layout:     post
+title:      LeetCode二叉搜索树的最近公共祖先
+subtitle:   二叉搜索树的最近公共祖先
+date:       2018-08-15
+author:     KaithyXu
+header-img: img/commonAncestor.png
+catalog: true
+tags:
+    - algorithm
+---
+## 二叉搜索树中第k小的元素
+
+
+### 题目描述
+
+给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+
+百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+
+![image] [/img/example_tree.png]
+
+如上图：对于节点2和8的最近公共祖先就是节点6，对于2和4的最近公共主线就是2
+
+### 解题思路
+
+首先，先考虑一下二叉搜索树的特性：对于任意非叶子节点，左子节点 < 父节点 < 右子节点
+所以对于最近的公共祖先x，与给定节点a，b的比较有一下几种：
+
+- x在两个给定节点中间，且 a < x < b (假设a比b小)
+- x就是给定节点中的一个
+
+所以转换为代码就是，递归节点，判断当前节点与给定节点的大小关系，根据关系进行相应的处理
+
+### 代码实现
+
+```
+public class TheClosestCommonAncestor {
+
+    private TreeNode record = null;
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q){
+
+        if(p.val > q.val){ 
+            acquireAncestor(root,q,p);
+        }else {
+            acquireAncestor(root,p,q);
+        }
+        return record;
+
+    }
+
+    private void acquireAncestor(TreeNode root, TreeNode min, TreeNode max){
+        if(root == null){
+            return;
+        }
+        if(root.val >= min.val && root.val <= max.val){ // 若 root 在 min与max中间，就是要找的最近公共祖先
+            record = root;
+        }else if(root.val < min.val){ // 若root 比 min 还要小，那说明给定节点在root节点的右侧
+            acquireAncestor(root.right,min,max);
+        }else {
+            acquireAncestor(root.left,min,max);
+        }
+    }
+}
+
+
+```
