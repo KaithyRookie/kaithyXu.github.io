@@ -118,3 +118,121 @@ public class LRUAlgorithmthim {
 
 
 ```
+
+### 代码优化
+
+在上面的基础上，由于find()方法需要遍历整个链表寻找元素，时间复杂度为O(n)，所以考虑使用HashMap进行键值对的存储，其次，研究了别人的优秀答案后发现自己对于哨兵节点的使用存在误区，按理说哨兵节点是不需要移动的，也就是所有节点的新增与删除都在尾部的哨兵节点之前，头部的哨兵节点之后进行，由于链表的插入时间复杂度是O(1)，所以我加了两个哨兵节点，header与 footer,同时将节点的新增与删除方法提取出来，病将find()中的移动节点至尾部的功能也提取了出来。
+
+```
+import java.util.HashMap;
+import java.util.Map;
+
+public class LRUCache {
+
+    private int capacity;
+
+    private int cursor;
+
+    private ListNode header;
+
+    private ListNode footer;
+
+    private static class ListNode{
+        private int key;
+        private int value;
+        private ListNode next;
+        private ListNode previous;
+
+        ListNode (int key,int value){
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private Map<Integer,ListNode> cache = new HashMap<>();
+
+    public LRUCache(int capacity) {
+        header = new ListNode(-1,-1);
+        footer = new ListNode(-1,-1);
+        header.next = footer;
+        footer.previous = header;
+        this.capacity = capacity;
+        cursor = 0;
+    }
+
+    public int get(int key) {
+        ListNode temp = cache.get(key);
+        if(temp != null){
+            moveToFoot(temp);
+            return temp.value;
+        }
+        return -1;
+    }
+
+    public void put(int key, int value) {
+
+        ListNode temp = cache.get(key);
+        if(temp != null){
+            temp.value = value;
+            moveToFoot(temp);
+        }else {
+            if(cursor == capacity){
+                ListNode delNode = popListNode();
+                removeNode(delNode);
+                cache.remove(delNode.key,delNode);
+                cursor--;
+            }
+            temp = new ListNode(key,value);
+            addNode(temp);
+            cursor++;
+        }
+        cache.put(key,temp);
+    }
+
+    /**
+     * 在尾部哨兵节点之前新增节点，同时将哨兵节点前指针指向的节点指向新插入的节点
+     * @param node
+     */
+    private void addNode(ListNode node){
+
+        node.next = this.footer;
+        node.previous = this.footer.previous;
+
+        this.footer.previous.next = node;
+        this.footer.previous = node;
+
+    }
+
+    /**
+     * 移除链表节点，由于有前后指针，时间复杂度为O(1)
+     * @param node
+     */
+    private void removeNode(ListNode node){
+        ListNode pre = node.previous;
+        ListNode next = node.next;
+        pre.next = next;
+        next.previous = pre;
+    }
+
+    /**
+     * 移动节点至链表尾部，即先将节点从原来的链表中删除，后做一次节点的插入操作
+     * @param node
+     */
+    private void moveToFoot(ListNode node){
+        this.removeNode(node);
+        this.addNode(node);
+    }
+
+    /**
+     * 由于存在哨兵节点，弹出当前节点只需要弹出头部哨兵节点后指针指向的节点即可
+     * @return
+     */
+    private ListNode popListNode(){
+        ListNode temp = header.next;
+        removeNode(temp);
+        return temp;
+    }
+
+}
+
+```
