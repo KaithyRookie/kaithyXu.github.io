@@ -4,7 +4,7 @@ title:      LeetCode数组中的第K个最大元素
 subtitle:   数组中的第K个最大元素
 date:       2018-10-04
 author:     KaithyXu
-header-img: img/reverseWords.jpg
+header-img: img/findKthLargest.jpg
 catalog: true
 tags:
     - algorithm
