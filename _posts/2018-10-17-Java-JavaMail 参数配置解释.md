@@ -7,7 +7,7 @@ author:     KaithyXu
 header-img: img/JavaMail.jpg
 catalog: true
 tags:
-    - JavaMail
+    - Java
 ---
 ## JavaMail使用
 
