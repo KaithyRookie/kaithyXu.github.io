@@ -17,9 +17,8 @@ tags:
 SpringBoot 提供了一个封装好的工具类JavaMailSender来实现邮件的发送，但是在application.properties中如何配置邮件服务的参数是个比较大的问题，所以自己打算收集这些参数，做个整理，以便后续再用需要使用Java Mail时不会一头雾水。
 
 
-### 解题思路
+### SpringBoot中的常见配置与使用
 
- 利用快排算法先对数组进行排序，然后再根据数组下标取得第K大的元素，其中，在快排递归的时候，先判断数组中间位置与k的大小，根据比较结果选择递归的方向以减少不必要的递归消耗。
  application.properties中比较常用的邮件服务设置：
 ```
 spring.mail.default-encoding=UTF-8
@@ -161,8 +160,9 @@ public class MailSendService {
 
 ````
 
-### mail.properties中各个参数整理
-一下主要是整理mail.properties中的各项属性的用途，前缀由于统一都是spring.mail.properties,所以就忽略不写
+### JavaMail各参数使用整理
+
+这里主要是整理mail.properties中的各项参数的用途，以我个人的理解来对使用频率做了一个区分，经常会用到的参数我优先放在了前面，在配置文件中，由于前缀统一都是spring.mail.properties,所以表格中就忽略不写。另外，由于个人水平有限，部分参数解释的不是很到位，可以点击链接前往[JavaMail API文档](https://javaee.github.io/javamail/docs/api/com/sun/mail/smtp/package-summary.html)查看对应的参数说明！
 
 
 | 名称 | 类型 | 功能 |
