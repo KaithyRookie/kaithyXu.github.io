@@ -22,7 +22,8 @@ ConcurrentHashMap是线程安全的容器；
 * ConcurrentHashMap中健值对是无序存放的
 
 ### 结构
-![](img/concurrentHashMap.png)
+
+![image](img/concurrentHashMap.png)
 
 ### ConcurrentHashMap使用
 ConcurrentHashMap中使用节点数组保存第一个节点，
@@ -53,7 +54,7 @@ while ((tab = table) == null || tab.length == 0) {
 
 2. put
 put方法的流程图如下：
-![](img/ConcurrentHashMap_Put流程图)
+![image](img/ConcurrentHashMap_Put流程图)
 
 写入前会去获取hashCode对应位置的节点，存在一下几种情况：
 
