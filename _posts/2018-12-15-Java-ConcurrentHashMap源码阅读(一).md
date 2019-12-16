@@ -54,7 +54,7 @@ while ((tab = table) == null || tab.length == 0) {
 
 2. put
 put方法的流程图如下：
-![image](img/ConcurrentHashMap_Put流程图)
+![image](img/ConcurrentHashMap_Put.jpg)
 
 写入前会去获取hashCode对应位置的节点，存在一下几种情况：
 
