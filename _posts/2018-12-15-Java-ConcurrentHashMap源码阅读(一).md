@@ -4,7 +4,7 @@ title:      ConcurrentHashMap源码阅读(一)
 subtitle:   ConcurrentHashMap源码阅读(一)
 date:       2018-12-15
 author:     KaithyXu
-header-img: img/ConcurrentHashMap.jpg
+header-img: img/thunderstorm.jpg
 catalog: true
 tags:
     - Java
