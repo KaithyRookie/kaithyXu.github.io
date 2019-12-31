@@ -2,7 +2,7 @@
 layout:     post
 title:      JavaMail使用
 subtitle:   JavaMail中各配置参数收集整理
-date:       2018-10-14
+date:       2019-10-14
 author:     KaithyXu
 header-img: img/JavaMail.jpg
 catalog: true

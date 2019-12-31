@@ -2,7 +2,7 @@
 layout:     post
 title:      LeetCode二叉搜索树中第k小的元素
 subtitle:   二叉搜索树中第k小的元素
-date:       2018-08-14
+date:       2019-08-14
 author:     KaithyXu
 header-img: img/binarySearchTree.jpg
 catalog: true
