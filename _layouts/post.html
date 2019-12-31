@@ -21,6 +21,12 @@ layout: default
         background: rgba(0,0,0, {{ page.header-mask }});
     }
     {% endif %}
+
+    {% if page.font-color %}
+    .post-heading{
+        color: black;
+    }
+    {% endif %}
 </style>
 <header class="intro-header" >
     <div class="header-mask"></div>
@@ -33,11 +39,7 @@ layout: default
                         <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
                         {% endfor %}
                     </div>
-                    {{% if page.color %}}
-                    <h1 style="color: black">{{ page.title }}</h1>
-                    {% else %}
                     <h1>{{ page.title }}</h1>
-                    {% endif %}
                     {% comment %}
                         always create a h2 for keeping the margin , Hux
                     {% endcomment %}
