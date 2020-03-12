@@ -4,7 +4,7 @@ title:      Hair whistle of people
 subtitle:   发哨子的人
 date:       2020-03-12
 author:     KaithyXu
-header-img: img/elephant.jpg
+header-img: img/gull.jpg
 catalog: true
 tags:
     - Reproduced
